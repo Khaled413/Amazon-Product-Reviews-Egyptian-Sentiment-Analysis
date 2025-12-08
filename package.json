@@ -1,0 +1,31 @@
+{
+    "name": "egyptian-sentiment-analysis",
+    "version": "1.0.0",
+    "description": "Egyptian Arabic Sentiment Analysis System with ML Models and Web API",
+    "main": "api/dist/index.js",
+    "scripts": {
+        "install-all": "cd api && npm install",
+        "build": "cd api && npm run build",
+        "dev": "cd api && npm run dev",
+        "start": "cd api && npm start",
+        "watch": "cd api && npm run watch"
+    },
+    "keywords": [
+        "sentiment-analysis",
+        "egyptian-arabic",
+        "nlp",
+        "machine-learning",
+        "api"
+    ],
+    "author": "",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.2",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.9.3"
+    }
+}

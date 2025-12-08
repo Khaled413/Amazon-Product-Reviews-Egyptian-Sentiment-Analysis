@@ -1,0 +1,402 @@
+[
+  {
+    "text": "المنتج ده جامد اوي والجوده قويه خالص، انصح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده جامد أوي والجودة قوية خالص، أنصح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "حلوه اوي والجوده عاليه، مستريح في استخدامها",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "حلوة أوي والجودة عالية، مستريح في استخدامها",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده قوي اوي والخدمه ممتازه، انصح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده قوي أوي والخدمة ممتازة، أنصح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "كويسه اوي والمنتج خالص، جربته ومرتاح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويسة أوي والمنتج خالص، جربته ومرتاح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده حلو اوي والجوده عاليه، ينفع كويس",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده حلو أوي والجودة عالية، ينفع كويس",
+    "cleaned": true
+  },
+  {
+    "text": "ممتازه اوي والخدمه سريعه، انصح بيه خالص",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "ممتازة أوي والخدمة سريعة، أنصح بيه خالص",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج جامد والجوده قويه، مستريح في استخدامه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج جامد والجودة قوية، مستريح في استخدامه",
+    "cleaned": true
+  },
+  {
+    "text": "حلوه اوي والمنتج كويس، جربته ومرتاح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "حلوة أوي والمنتج كويس، جربته ومرتاح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده قوي والخدمه ممتازه، انصح بيه خالص",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده قوي والخدمة ممتازة، أنصح بيه خالص",
+    "cleaned": true
+  },
+  {
+    "text": "كويسه اوي والجوده عاليه، ينفع كويس",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويسة أوي والجودة عالية، ينفع كويس",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده حلو والخدمه سريعه، مستريح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده حلو والخدمة سريعة، مستريح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "ممتازه اوي والمنتج خالص، جربته ومرتاح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "ممتازة أوي والمنتج خالص، جربته ومرتاح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده حلو اوي والجوده عاليه خالص",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده حلو أوي والجودة عالية خالص",
+    "cleaned": true
+  },
+  {
+    "text": "كويسه والخدمه ممتازه، انصح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويسة والخدمة ممتازة، أنصح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج جامد والجوده قويه، مستريح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج جامد والجودة قوية، مستريح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "حلوه اوي والمنتج كويس، ينفع كويس",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "حلوة أوي والمنتج كويس، ينفع كويس",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده قوي والخدمه سريعه، انصح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده قوي والخدمة سريعة، أنصح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "ممتازه والجوده عاليه، مستريح في استخدامها",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "ممتازة والجودة عالية، مستريح في استخدامها",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده حلو والخدمه ممتازه، انصح بيه خالص",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده حلو والخدمة ممتازة، أنصح بيه خالص",
+    "cleaned": true
+  },
+  {
+    "text": "كويسه اوي والمنتج خالص، جربته ومرتاح بيه",
+    "source": "egyptian_positive",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويسة أوي والمنتج خالص، جربته ومرتاح بيه",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلو خالص والمنتج خايب، غالي اوي ومش يستاهل",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلو خالص والمنتج خايب، غالي أوي ومش يستاهل",
+    "cleaned": true
+  },
+  {
+    "text": "مش كويسه خالص، مينفعش تستخدمها كويس",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش كويسة خالص، مينفعش تستخدمها كويس",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلو والمنتج وحش، غالي اوي ومش يستاهل",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلو والمنتج وحش، غالي أوي ومش يستاهل",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده خايب اوي والجوده وحشه، مينفعش",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده خايب أوي والجودة وحشة، مينفعش",
+    "cleaned": true
+  },
+  {
+    "text": "مش كويس خالص والخدمه وحشه، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش كويس خالص والخدمة وحشة، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده وحش والجوده خايب، مينفعش يستخدم",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده وحش والجودة خايب، مينفعش يستخدم",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلوه خالص والمنتج خايب، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلوة خالص والمنتج خايب، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده وحش والخدمه خايب، مينفعش",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده وحش والخدمة خايب، مينفعش",
+    "cleaned": true
+  },
+  {
+    "text": "مش كويسه والجوده وحشه، غالي اوي ومش يستاهل",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش كويسة والجودة وحشة، غالي أوي ومش يستاهل",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده خايب والخدمه وحشه، مينفعش يستخدم",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده خايب والخدمة وحشة، مينفعش يستخدم",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلو والمنتج خايب، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلو والمنتج خايب، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده وحش والجوده خايب، مينفعش",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده وحش والجودة خايب، مينفعش",
+    "cleaned": true
+  },
+  {
+    "text": "مش كويسه خالص والخدمه وحشه، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش كويسة خالص والخدمة وحشة، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده خايب والمنتج وحش، مينفعش يستخدم",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده خايب والمنتج وحش، مينفعش يستخدم",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلوه والجوده خايب، غالي اوي ومش يستاهل",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلوة والجودة خايب، غالي أوي ومش يستاهل",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده وحش والخدمه خايب، مينفعش",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده وحش والخدمة خايب، مينفعش",
+    "cleaned": true
+  },
+  {
+    "text": "مش كويس والمنتج خايب، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش كويس والمنتج خايب، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده خايب والجوده وحشه، مينفعش يستخدم",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده خايب والجودة وحشة، مينفعش يستخدم",
+    "cleaned": true
+  },
+  {
+    "text": "مش حلوه خالص والخدمه وحشه، غالي اوي",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "مش حلوة خالص والخدمة وحشة، غالي أوي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج ده وحش والمنتج خايب، مينفعش",
+    "source": "egyptian_negative",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج ده وحش والمنتج خايب، مينفعش",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج عادي يعني، مش حلو ومش وحش، كويس",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج عادي يعني، مش حلو ومش وحش، كويس",
+    "cleaned": true
+  },
+  {
+    "text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج عادي والجوده متوسطه، مش حلو ومش وحش",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج عادي والجودة متوسطة، مش حلو ومش وحش",
+    "cleaned": true
+  },
+  {
+    "text": "كويس يعني، مش حلو اوي ومش وحش، عادي",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويس يعني، مش حلو أوي ومش وحش، عادي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج عادي والخدمه متوسطه، مش حلو ومش وحش",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج عادي والخدمة متوسطة، مش حلو ومش وحش",
+    "cleaned": true
+  },
+  {
+    "text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج عادي والجوده متوسطه، مش حلو ومش وحش",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج عادي والجودة متوسطة، مش حلو ومش وحش",
+    "cleaned": true
+  },
+  {
+    "text": "كويس يعني، مش حلو اوي ومش وحش، عادي",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "كويس يعني، مش حلو أوي ومش وحش، عادي",
+    "cleaned": true
+  },
+  {
+    "text": "المنتج عادي والخدمه متوسطه، مش حلو ومش وحش",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "المنتج عادي والخدمة متوسطة، مش حلو ومش وحش",
+    "cleaned": true
+  },
+  {
+    "text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "source": "egyptian_neutral",
+    "date_collected": "2025-12-03T21:29:57.163081",
+    "raw": true,
+    "original_text": "عادي يعني، مش حلو ومش وحش، كويس",
+    "cleaned": true
+  }
+]

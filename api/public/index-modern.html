@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>تحليل التقييمات المصرية</title>
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <link rel="stylesheet" href="/css/modern-style.css?v=8.0">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/logo.png" alt="Logo" style="width: 120px; height: 120px; object-fit: contain;">
+                    <div class="logo-text">
+                        <h1>تحليل المشاعر المصرية</h1>
+                        <p>منصة تحليل تقيمات أمازون بالذكاء الاصطناعي</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="projectInfoBtn">
+                        <span>ℹ️</span>
+                        معلومات المشروع
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 3rem 1.5rem;">
+        
+        <!-- Amazon Product Analyzer Section -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-header">
+                <div class="card-icon">🛒</div>
+                <div>
+                    <h2 class="card-title">تحليل منتج من أمازون</h2>
+                    <p class="card-subtitle">حلل كل التقييمات اللي على المنتج من أمازون</p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">لينك المنتج من أمازون</label>
+                <input 
+                    type="text" 
+                    class="input-field" 
+                    id="productUrl"
+                    placeholder="حط لينك المنتج من أمازون (amazon.com أو amazon.eg)"
+                />
+            </div>
+
+            <button class="btn btn-primary" id="analyzeProductBtn" style="width: 100%;">
+                <span>🔍</span>
+                حلل المنتج
+            </button>
+
+            <!-- Product Results -->
+            <div id="productResults" class="hidden" style="margin-top: 2rem;"></div>
+        </section>
+
+        <!-- Single Review Analyzer Section -->
+        <section class="card" style="margin-bottom: 2rem;">
+            <div class="card-header">
+                <div class="card-icon">📝</div>
+                <div>
+                    <h2 class="card-title">حلّل ريفيو واحد</h2>
+                    <p class="card-subtitle">اعرف التقييم إيجابي ولا سلبي ولا محايد</p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">نص التقييم</label>
+                <textarea 
+                    class="textarea-field" 
+                    id="reviewText"
+                    placeholder="اكتب التقييم بالعربي المصري... مثال: المنتج ده جامد أوي والجودة قوية خالص"
+                ></textarea>
+            </div>
+
+            <button class="btn btn-primary" id="analyzeReviewBtn" style="width: 100%;">
+                <span>🔍</span>
+                حلل التقييم
+            </button>
+
+            <!-- Review Results -->
+            <div id="reviewResults" class="hidden" style="margin-top: 2rem;"></div>
+        </section>
+
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-emoji">🤖</div>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <p class="loading-text">جارى التحليل بالذكاء الاصطناعي...</p>
+            <p class="loading-subtext">الموضوع ممكن ياخد ثواني قليلة</p>
+        </div>
+    </div>
+
+    <!-- Project Info Modal -->
+    <div id="projectInfoModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">معلومات المشروع</h2>
+                <button class="modal-close" id="closeModalBtn">✕</button>
+            </div>
+            <div class="modal-body" id="projectInfoContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/modern-app.js?v=8.0"></script>
+</body>
+</html>
