@@ -243,14 +243,23 @@ const ui = {
         const negativePercent = total > 0 ? (negativeCount / total) * 100 : 0;
         const neutralPercent = total > 0 ? (neutralCount / total) * 100 : 0;
         
-        // Calculate average rating
+        // استخدام التقييم الحقيقي من أمازون لو موجود
         let avgRating = 0;
-        let totalRatings = 0;
-        for (const [rating, count] of Object.entries(ratingDist)) {
-            avgRating += parseInt(rating) * count;
-            totalRatings += count;
+        if (dashboard.real_rating) {
+            // التقييم الحقيقي من أمازون
+            avgRating = dashboard.real_rating;
+        } else if (product.real_rating) {
+            // التقييم الحقيقي من product info
+            avgRating = product.real_rating;
+        } else {
+            // حساب من التقييمات المتاحة (fallback)
+            let totalRatings = 0;
+            for (const [rating, count] of Object.entries(ratingDist)) {
+                avgRating += parseInt(rating) * count;
+                totalRatings += count;
+            }
+            avgRating = totalRatings > 0 ? avgRating / totalRatings : 0;
         }
-        avgRating = totalRatings > 0 ? avgRating / totalRatings : 0;
         
         // Determine quality
         let quality = 'متوسط';
@@ -279,9 +288,9 @@ const ui = {
                 
                 <!-- Product Info with Price -->
                 <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem;">
-                    ${data.productInfo ? this.renderProductInfoSection(data.productInfo) : ''}
                     
-                    <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-white);">
+                    <!-- اسم المنتج أولاً -->
+                    <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-white); line-height: 1.5;">
                         ${product.title || 'Amazon Product'}
                     </h4>
                     
@@ -293,12 +302,14 @@ const ui = {
                         <span style="font-size: 1.25rem; font-weight: 700; color: var(--text-white);">
                             ${avgRating.toFixed(1)} / 5.0
                         </span>
+                        <!-- Quality Badge -->
+                        <div class="sentiment-badge ${qualityClass}" style="display: inline-flex;">
+                            <span>${quality}</span>
+                        </div>
                     </div>
                     
-                    <!-- Quality Badge -->
-                    <div class="sentiment-badge ${qualityClass}" style="display: inline-flex;">
-                        <span>${quality}</span>
-                    </div>
+                    <!-- السعر والمواصفات -->
+                    ${data.productInfo ? this.renderProductInfoSection(data.productInfo) : ''}
                 </div>
                 
                 <!-- Statistics Grid -->
@@ -609,7 +620,7 @@ const ui = {
                 <div style="text-align: center; margin-bottom: 2rem;">
                     <div class="sentiment-badge ${sentimentClass}" style="font-size: 1.5rem;">
                         <span style="font-size: 3rem;">${emoji}</span>
-                        <span>${sentiment.charAt(0).toUpperCase() + sentiment.slice(1)}</span>
+                        <span>${sentiment.includes('positive') ? 'إيجابي' : sentiment.includes('negative') ? 'سلبي' : 'محايد'}</span>
                     </div>
                 </div>
                 

@@ -85,9 +85,14 @@ class ProductReviewAnalyzer:
             analyzed_reviews.append(analyzed)
 
         dashboard = self._build_dashboard_data(analyzed_reviews)
+        
+        # إضافة التقييم الحقيقي من أمازون لو موجود
+        product_info = product.get("product", {})
+        if product_info.get("real_rating"):
+            dashboard["real_rating"] = product_info["real_rating"]
 
         return {
-            "product": product.get("product", {}),
+            "product": product_info,
             "scraped_at": product.get("scraped_at"),
             "reviews": [asdict(r) for r in analyzed_reviews],
             "dashboard": dashboard,

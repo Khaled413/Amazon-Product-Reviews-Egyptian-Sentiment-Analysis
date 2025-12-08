@@ -80,6 +80,10 @@ class AmazonProductScraper:
         if not product_title or product_title in ["Amazon.com", "Amazon.eg", "Amazon.co.uk", "Amazon Product"]:
             product_title = self._extract_title_from_url(product_url)
         
+        # Initialize real rating storage
+        self._real_rating = None
+        self._real_review_count = None
+        
         product_info = {
             "url": product_url,
             "asin": asin,
@@ -94,6 +98,12 @@ class AmazonProductScraper:
             reviews = self._generate_dummy_reviews()
 
         reviews_dicts = [asdict(r) for r in reviews][:max_reviews]
+        
+        # إضافة التقييم الحقيقي للـ product info
+        if self._real_rating:
+            product_info["real_rating"] = self._real_rating
+        if self._real_review_count:
+            product_info["real_review_count"] = self._real_review_count
 
         return {
             "product": product_info,
@@ -292,6 +302,9 @@ class AmazonProductScraper:
             if product_info and product_info.get('rating'):
                 log(f"⭐ النجوم الحقيقية: {product_info['rating']}/5.0")
                 log(f"📊 عدد التقييمات: {product_info.get('review_count', 'غير معروف')}")
+                # حفظ التقييم الحقيقي عشان نستخدمه في الـ UI
+                self._real_rating = product_info['rating']
+                self._real_review_count = product_info.get('review_count')
             
             # توليد تقييمات واقعية بناءً على المعلومات الحقيقية
             reviews = basic_scraper.generate_realistic_reviews(product_info, num_reviews=8)

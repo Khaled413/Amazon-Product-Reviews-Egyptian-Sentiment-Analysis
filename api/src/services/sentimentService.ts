@@ -24,12 +24,20 @@ const POSITIVE_WORDS = [
 ];
 
 const NEGATIVE_WORDS = [
-  'وحش', 'سيء', 'خايب', 'زفت', 'بايظ', 'مش كويس', 'ضعيف', 'رديء',
+  'وحش', 'سيء', 'سيئ', 'خايب', 'زفت', 'بايظ', 'مش كويس', 'ضعيف', 'رديء',
   'زبالة', 'فاشل', 'مضروب', 'غالي', 'مغشوش', 'تقليد', 'fake', 'مزيف',
   'متأخر', 'بطيء', 'مكسور', 'خربان', 'معطل', 'ندمان', 'زعلان', 'مش راضي',
   'أسوأ', 'أوحش', 'مش هشتري', 'مش هاخد', 'ضيعت فلوسي', 'نصب', 'احتيال',
   'مقطوع', 'ناقص', 'مفيش', 'لا يوجد', 'لايوجد', 'مش موجود', 'ارجو', 'أرجو',
   'للأسف', 'لسوء', 'مشكلة', 'عيب', 'عيوب',
+  // كلمات تحذير من الشراء
+  'متشتريش', 'ماتشتريش', 'متشتروش', 'ماتشتروش', 'متجيبش', 'ماتجيبش',
+  'مش هنصح', 'ما انصحش', 'ماانصحش', 'لا انصح', 'لاانصح',
+  'متاخدش', 'ماتاخدش', 'متاخدوش', 'ماتاخدوش',
+  // كلمات سلبية قوية
+  'سيء جدا', 'سيئ جدا', 'وحش جدا', 'خايب جدا', 'زفت جدا',
+  'اوحش', 'أوحش حاجة', 'اسوأ', 'أسوأ حاجة',
+  'مش دقيق', 'مش دقيقة', 'معدتش', 'مبقتش',
   'bad', 'worst', 'terrible', 'horrible', 'awful', 'poor', 'waste', 'disappointed',
   'broken', 'fake', 'scam', 'never', 'dont', "don't", 'hate', 'useless', 'missing'
 ];
@@ -49,6 +57,8 @@ const REVIEW_INDICATORS = [
   'الضمان', 'الصيانة', 'خدمة العملاء', 'الدعم',
   'استخدمته', 'جربته', 'شغال', 'بيشتغل', 'مش شغال',
   'أنصح', 'انصح', 'مش هنصح', 'recommend', 'هشتري', 'مش هشتري',
+  // كلمات تحذير/نصيحة شراء - دي بتدل على تقييم
+  'متشتريش', 'ماتشتريش', 'اشتري', 'اشتروا', 'متشتروش',
   // كلمات إنجليزية
   'product', 'item', 'device', 'phone', 'laptop', 'screen', 'quality',
   'shipping', 'delivery', 'package', 'price', 'worth', 'buy', 'bought',
@@ -65,11 +75,18 @@ interface ValidationResult {
   reason?: string;
 }
 
+// كلمات عامة مش بتدل على تقييم منتج
+const NON_REVIEW_CONTEXTS = [
+  'الجو', 'الطقس', 'النهارده', 'اليوم', 'الصبح', 'بالليل',
+  'الاكل', 'الأكل', 'المطعم', 'الفيلم', 'المسلسل', 'الماتش',
+  'weather', 'today', 'movie', 'food', 'restaurant'
+];
+
 function isValidReview(text: string): ValidationResult {
   const trimmedText = text.trim();
   
-  // التحقق من الطول
-  if (trimmedText.length < 5) {
+  // التحقق من الطول - الحد الأدنى 3 حروف بس
+  if (trimmedText.length < 3) {
     return { isValid: false, reason: '✍️ النص قصير أوي! اكتب تقييم أطول شوية عشان أقدر أحلله' };
   }
   
@@ -77,18 +94,19 @@ function isValidReview(text: string): ValidationResult {
     return { isValid: false, reason: '📝 النص طويل أوي! حاول تختصر شوية' };
   }
   
-  // عد الكلمات (مش الحروف)
-  const words = trimmedText.split(/\s+/).filter(w => w.length > 0);
+  const textLower = trimmedText.toLowerCase();
   
-  // لو كلمة واحدة أو اتنين بس = مش تقييم
-  if (words.length < 2) {
-    return { isValid: false, reason: '💭 محتاج جملة كاملة! اكتب رأيك في المنتج بشكل أوضح' };
+  // التحقق من السياقات اللي مش تقييم منتج
+  let hasNonReviewContext = false;
+  for (const context of NON_REVIEW_CONTEXTS) {
+    if (textLower.includes(context.toLowerCase()) || trimmedText.includes(context)) {
+      hasNonReviewContext = true;
+      break;
+    }
   }
   
-  // التحقق من وجود كلمات تدل على تقييم
-  const textLower = trimmedText.toLowerCase();
+  // التحقق من وجود كلمات تدل على تقييم منتج
   let hasReviewIndicator = false;
-  
   for (const indicator of REVIEW_INDICATORS) {
     if (textLower.includes(indicator.toLowerCase()) || trimmedText.includes(indicator)) {
       hasReviewIndicator = true;
@@ -105,15 +123,37 @@ function isValidReview(text: string): ValidationResult {
     }
   }
   
-  // لو مفيش أي مؤشر على تقييم ومفيش كلمات مشاعر
-  if (!hasReviewIndicator && !hasSentimentWord) {
+  // لو فيه سياق مش تقييم (زي الجو) ومفيش مؤشر تقييم = رفض
+  if (hasNonReviewContext && !hasReviewIndicator) {
     return { 
       isValid: false, 
-      reason: '🤔 مش قادر أفهم ده تقييم لإيه! جرب تكتب رأيك في منتج اشتريته أو تجربة شراء عدت بيها' 
+      reason: '🤔 ده مش شبه تقييم منتج! جرب تكتب رأيك في منتج اشتريته من أمازون أو أي متجر' 
     };
   }
   
-  return { isValid: true };
+  // لو فيه مؤشر تقييم = صالح
+  if (hasReviewIndicator) {
+    return { isValid: true };
+  }
+  
+  // لو فيه كلمة مشاعر والنص طويل شوية (أكتر من 15 حرف) = صالح
+  if (hasSentimentWord && trimmedText.length > 15) {
+    return { isValid: true };
+  }
+  
+  // لو فيه كلمة مشاعر بس النص قصير = نطلب توضيح
+  if (hasSentimentWord) {
+    return { 
+      isValid: false, 
+      reason: '💭 وضح أكتر! إيه المنتج اللي بتتكلم عنه؟ اكتب تقييم أطول شوية' 
+    };
+  }
+  
+  // لو مفيش أي مؤشر على تقييم ومفيش كلمات مشاعر
+  return { 
+    isValid: false, 
+    reason: '🤔 مش قادر أفهم ده تقييم لإيه! جرب تكتب رأيك في منتج اشتريته أو تجربة شراء عدت بيها' 
+  };
 }
 
 /**
