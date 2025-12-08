@@ -1,4 +1,3 @@
-# 📦 دليل التسليم للدكتور
 ## Project Submission Guide
 
 <div align="center">
