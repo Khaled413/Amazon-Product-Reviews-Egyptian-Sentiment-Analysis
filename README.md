@@ -1,4 +1,3 @@
-# 📦 دليل التسليم للدكتور
 ## Project Submission Guide
 
 <div align="center">
@@ -6,7 +5,7 @@
 # منصة تحليل مشاعر المراجعات المصرية
 ### Egyptian Arabic Sentiment Analysis Platform
 
-**مشروع تخرج - قسم علوم الحاسب**
+**TextMinds Team**
 
 ---
 
