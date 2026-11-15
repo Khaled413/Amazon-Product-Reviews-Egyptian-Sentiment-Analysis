@@ -46,7 +46,8 @@ class ProductReviewAnalyzer:
 
     يعتمد على:
     - rating + كلمات مفتاحية لتحديد المشاعر.
-    - قواعد بسيطة لـ sarcasm / fake / aspects / entities / summary.
+    - قواعد لغوية إرشادية (Rule-based Heuristics) لـ sarcasm / fake / aspects / entities / summary،
+      مع توضيح أنها تقديرات تقريبية مبنية على أنماط الكلمات وليست نماذج تعلم عميق.
     """
 
     POSITIVE_WORDS = ["جامد", "حلو", "حلوة", "ممتاز", "كويس", "قوي", "خدمة ممتازة", "تحفة"]

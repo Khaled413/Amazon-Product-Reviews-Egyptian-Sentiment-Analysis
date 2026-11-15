@@ -1,17 +1,40 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "web": {
-      "root": "api",
-      "framework": "express"
-    }
-  },
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": {
-        "service": "web"
-      }
+      "src": "api/src/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/css/(.*)",
+      "dest": "api/public/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "api/public/js/$1"
+    },
+    {
+      "src": "/favicon\\.ico",
+      "dest": "api/public/icon.ico"
+    },
+    {
+      "src": "/favicon\\.png",
+      "dest": "api/public/logo.png"
+    },
+    {
+      "src": "/logo\\.png",
+      "dest": "api/public/logo.png"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "api/src/index.ts"
     }
   ]
 }

@@ -1,10 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import { promisify } from 'util';
 import path from 'path';
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 const router = Router();
 
 // Helper function to validate Amazon URL
@@ -82,15 +82,23 @@ router.post(
       });
     }
 
+    // فحص البيئة السحابية Vercel: لا تدعم تشغيل سكريبتات Python المعقدة محلياً
+    if (process.env.VERCEL) {
+      return res.status(501).json({
+        error: 'الخدمة غير متوفرة على بيئة Vercel السحابية',
+        message: 'تحليل رابط المنتج الكامل وسحب المراجعات يتطلب بيئة بايثون محلية أو خادم مخصص. يمكنك تجربة ميزة "تحليل تقييم فردي" مباشرة!',
+        isVercel: true
+      });
+    }
+
     try {
       const apiDir = path.resolve(__dirname, '..', '..');
       const projectRoot = path.resolve(apiDir, '..');
       const scriptPath = path.join(apiDir, 'scripts', 'analyze_product.py');
 
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
-      const command = `${pythonCmd} "${scriptPath}" "${url.replace(/"/g, '\\"')}"`;
 
-      const { stdout, stderr } = await execAsync(command, {
+      const { stdout, stderr } = await execFileAsync(pythonCmd, [scriptPath, url], {
         cwd: projectRoot,
         maxBuffer: 20 * 1024 * 1024,
         encoding: 'buffer',
@@ -180,15 +188,23 @@ router.post(
       });
     }
 
+    // فحص البيئة السحابية Vercel: لا تدعم تشغيل سكريبتات Python المعقدة محلياً
+    if (process.env.VERCEL) {
+      return res.status(501).json({
+        error: 'الخدمة غير متوفرة على بيئة Vercel السحابية',
+        message: 'جلب بيانات المنتج من أمازون يتطلب بيئة بايثون محلية أو خادم مخصص.',
+        isVercel: true
+      });
+    }
+
     try {
       const apiDir = path.resolve(__dirname, '..', '..');
       const projectRoot = path.resolve(apiDir, '..');
       const scriptPath = path.join(apiDir, 'scripts', 'product_info_scraper.py');
 
       const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
-      const command = `${pythonCmd} "${scriptPath}" "${url.replace(/"/g, '\\"')}"`;
 
-      const { stdout, stderr } = await execAsync(command, {
+      const { stdout, stderr } = await execFileAsync(pythonCmd, [scriptPath, url], {
         cwd: projectRoot,
         maxBuffer: 20 * 1024 * 1024,
         encoding: 'buffer',

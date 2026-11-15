@@ -29,21 +29,21 @@ router.get('/', (req: Request, res: Response) => {
         { name: 'الخادم الخلفي', value: 'Node.js + Express + TypeScript' },
         { name: 'معالجة اللغة', value: 'Python + scikit-learn + NLTK' },
         { name: 'الواجهة الأمامية', value: 'HTML5 + CSS3 + JavaScript' },
-        { name: 'نماذج التعلم الآلي', value: 'SVM (90%) + Random Forest (88%) + Logistic Regression (85%)' },
+        { name: 'نماذج التعلم الآلي', value: 'SVM (94.1%) + Random Forest (94.1%) + Logistic Regression (94.1%)' },
         { name: 'جمع البيانات', value: 'BeautifulSoup + Requests' },
         { name: 'واجهة برمجية', value: 'RESTful API مع JSON' }
       ],
       endpoints: [
         { method: 'GET', path: '/api/health', description: 'فحص حالة النظام' },
         { method: 'POST', path: '/api/sentiment/analyze', description: 'تحليل مشاعر تقييم واحد' },
-        { method: 'POST', path: '/api/product/analyze', description: 'تحليل منتج كامل من أمازون' },
-        { method: 'POST', path: '/api/product/info', description: 'جلب معلومات المنتج (السعر، المواصفات)' },
+        { method: 'POST', path: '/api/product/analyze', description: 'تحليل منتج كامل من أمازون (محلياً)' },
+        { method: 'POST', path: '/api/product/info', description: 'جلب معلومات المنتج (السعر، المواصفات) (محلياً)' },
         { method: 'GET', path: '/api/project-info', description: 'معلومات المشروع' }
       ],
       models: [
-        { name: 'SVM', accuracy: '90%', description: 'أعلى دقة' },
-        { name: 'Random Forest', accuracy: '88%', description: 'متوازن' },
-        { name: 'Logistic Regression', accuracy: '85%', description: 'أسرع' }
+        { name: 'SVM', accuracy: '94.1%', description: 'أعلى دقة وثبات' },
+        { name: 'Random Forest', accuracy: '94.1%', description: 'متوازن' },
+        { name: 'Logistic Regression', accuracy: '94.1%', description: 'أسرع' }
       ],
       supportedSites: ['amazon.eg', 'amazon.com', 'amazon.ae', 'amazon.sa'],
       developer: {

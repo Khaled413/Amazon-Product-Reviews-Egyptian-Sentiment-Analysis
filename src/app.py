@@ -97,9 +97,10 @@ class SentimentAnalyzer:
         if self.vectorizer:
             features = self.vectorizer.transform([processed_text]).toarray()
         else:
-            # إذا لم يكن هناك vectorizer، نحتاج لاستخراج الخصائص مباشرة
-            extractor = FeatureExtractor(method='tfidf')
-            features = extractor.fit_transform([processed_text])
+            raise ValueError(
+                "ملف الـ Vectorizer غير موجود أو لم يتم تحميله! "
+                "لا يمكن إجراء fit_transform على نص استدلال واحد لأن أبعاد الخصائص لن تتطابق مع النموذج المدرب."
+            )
         
         # التنبؤ
         prediction = self.model.predict(features)[0]

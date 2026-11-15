@@ -15,15 +15,27 @@ const app = express();
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
 const HOST: string = process.env.HOST || '0.0.0.0';
 
-// Middleware - بسيط ومباشر
-app.use(cors({ origin: '*' }));
+// Middleware - محمي وآمن
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(helmet({ 
-  contentSecurityPolicy: false,
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'"]
+    }
+  },
   crossOriginEmbedderPolicy: false
 }));
 app.use(morgan('dev'));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Serve static files - المسار الصحيح
 // __dirname في compiled code بيكون dist/, ف publicPath بيكون api/public
@@ -74,32 +86,37 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-// Start server
-app.listen(PORT, HOST, () => {
-  const os = require('os');
-  const networkInterfaces = os.networkInterfaces();
-  const ips: string[] = [];
-  
-  for (const interfaceName in networkInterfaces) {
-    const interfaces = networkInterfaces[interfaceName];
-    if (interfaces) {
-      for (const iface of interfaces) {
-        if (iface.family === 'IPv4' && !iface.internal) {
-          ips.push(iface.address);
+// Start server only when running locally (not on Vercel)
+if (!process.env.VERCEL) {
+  app.listen(PORT, HOST, () => {
+    const os = require('os');
+    const networkInterfaces = os.networkInterfaces();
+    const ips: string[] = [];
+    
+    for (const interfaceName in networkInterfaces) {
+      const interfaces = networkInterfaces[interfaceName];
+      if (interfaces) {
+        for (const iface of interfaces) {
+          if (iface.family === 'IPv4' && !iface.internal) {
+            ips.push(iface.address);
+          }
         }
       }
     }
-  }
-  
-  const mainIP = ips.length > 0 ? ips[0] : 'localhost';
-  
-  console.log(`\n🚀 Server running!`);
-  console.log(`📱 Local:    http://localhost:${PORT}`);
-  if (ips.length > 0) {
-    console.log(`🌐 Network:  http://${mainIP}:${PORT}`);
-  }
-  console.log(`\n`);
-});
+    
+    const mainIP = ips.length > 0 ? ips[0] : 'localhost';
+    
+    console.log(`\n🚀 Server running!`);
+    console.log(`📱 Local:    http://localhost:${PORT}`);
+    if (ips.length > 0) {
+      console.log(`🌐 Network:  http://${mainIP}:${PORT}`);
+    }
+    console.log(`\n`);
+  });
+}
 
 export default app;
+
+// Vercel serverless compatibility
+module.exports = app;
 

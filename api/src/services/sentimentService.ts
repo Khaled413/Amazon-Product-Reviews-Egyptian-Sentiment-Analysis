@@ -1,9 +1,9 @@
-import { exec, spawn, ChildProcess } from 'child_process';
+import { execFile } from 'child_process';
 import { promisify } from 'util';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 interface SentimentResult {
   text: string;
@@ -246,6 +246,52 @@ function quickAnalyze(text: string): SentimentResult & { warning?: string } {
 }
 
 /**
+ * محاولة التحليل بالنموذج المدرب (Python ML Model) عند توفره محلياً
+ */
+async function analyzeWithTrainedModel(text: string): Promise<SentimentResult | null> {
+  // على Vercel أو البيئات السحابية الخفيفة لا يوجد بايثون
+  if (process.env.VERCEL) {
+    return null;
+  }
+
+  try {
+    const projectRoot = path.resolve(__dirname, '..', '..', '..');
+    const scriptPath = path.join(projectRoot, 'api', 'scripts', 'analyze.py');
+    const modelPath = path.join(projectRoot, 'models', 'svm_model.pkl');
+    const vectorizerPath = path.join(projectRoot, 'models', 'vectorizer.pkl');
+
+    if (!fs.existsSync(scriptPath) || !fs.existsSync(modelPath) || !fs.existsSync(vectorizerPath)) {
+      return null;
+    }
+
+    const pythonCmd = process.platform === 'win32' ? 'python' : 'python3';
+    const { stdout } = await execFileAsync(pythonCmd, [scriptPath, text, modelPath, vectorizerPath], {
+      cwd: projectRoot,
+      timeout: 10000,
+      encoding: 'utf8'
+    });
+
+    const outputStr = stdout.trim();
+    const jsonStart = outputStr.indexOf('{');
+    if (jsonStart >= 0) {
+      const data = JSON.parse(outputStr.substring(jsonStart));
+      if (!data.error && data.sentiment) {
+        return {
+          text,
+          sentiment: data.sentiment,
+          confidence: data.confidence || 0.85,
+          label: data.label !== undefined ? data.label : 0,
+          processed_text: data.processed_text || text
+        };
+      }
+    }
+  } catch (err) {
+    // في حال عدم توفر بايثون محلياً يتم الرجوع للتحليل المدمج السريع
+  }
+  return null;
+}
+
+/**
  * Analyze sentiment of a single text - سريع ودقيق
  */
 export async function analyzeSentiment(text: string): Promise<SentimentResult & { warning?: string; isValidReview?: boolean }> {
@@ -264,6 +310,12 @@ export async function analyzeSentiment(text: string): Promise<SentimentResult & 
     };
   }
   
+  // تجربة الاستدعاء بالنموذج المدرب إن وجد، وإلا استخدام التحليل السريع
+  const mlResult = await analyzeWithTrainedModel(text);
+  if (mlResult) {
+    return { ...mlResult, isValidReview: true };
+  }
+
   // استخدام التحليل السريع
   const result = quickAnalyze(text);
   return { ...result, isValidReview: true };

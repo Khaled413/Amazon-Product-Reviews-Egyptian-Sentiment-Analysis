@@ -90,12 +90,14 @@ class AmazonProductScraper:
             "title": product_title,
         }
 
+        is_mock_data = False
         try:
             reviews: List[Review] = self._scrape_reviews_stub(product_url)
         except Exception as e:
-            # في حالة أي خطأ، استخدم بيانات تجريبية
-            log(f"تحذير: فشل Scraping حقيقي من أمازون ({e})، استخدام بيانات تجريبية.")
+            # في حالة أي خطأ، استخدم بيانات تجريبية مع وسمها بوضوح
+            log(f"تحذير: فشل Scraping حقيقي من أمازون ({e})، استخدام بيانات تجريبية مع وسمها.")
             reviews = self._generate_dummy_reviews()
+            is_mock_data = True
 
         reviews_dicts = [asdict(r) for r in reviews][:max_reviews]
         
@@ -104,10 +106,12 @@ class AmazonProductScraper:
             product_info["real_rating"] = self._real_rating
         if self._real_review_count:
             product_info["real_review_count"] = self._real_review_count
+        product_info["is_mock_data"] = is_mock_data or getattr(self, "_used_mock_reviews", False)
 
         return {
             "product": product_info,
             "reviews": reviews_dicts,
+            "is_mock_data": product_info["is_mock_data"],
             "scraped_at": datetime.now().isoformat(),
         }
     
@@ -320,7 +324,8 @@ class AmazonProductScraper:
                 
         except Exception as e:
             log(f"⚠️ خطأ: {e}")
-            log("ℹ️ استخدام تقييمات افتراضية...")
+            log("ℹ️ استخدام تقييمات افتراضية موسومة...")
+            self._used_mock_reviews = True
             return self._generate_dummy_reviews()
     
     def _scrape_with_selenium(self, product_url: str) -> List[Review]:

@@ -2,11 +2,11 @@
 
 ## النماذج المدربة
 
-| النموذج | الملف | الدقة | F1-Score |
-|---------|-------|-------|----------|
-| SVM | `sentiment_svm.pkl` | 90% | 0.89 |
-| Random Forest | `sentiment_rf.pkl` | 88% | 0.87 |
-| Logistic Regression | `sentiment_lr.pkl` | 85% | 0.84 |
+| النموذج | الملف | الدقة (Accuracy) | F1-Score |
+|---------|-------|------------------|----------|
+| SVM | `svm_model.pkl` / `sentiment_svm.pkl` | 94.1% | 0.937 |
+| Random Forest | `rf_model.pkl` / `sentiment_rf.pkl` | 94.1% | 0.937 |
+| Logistic Regression | `lr_model.pkl` / `sentiment_lr.pkl` | 94.1% | 0.937 |
 
 ## Feature Extraction
 
@@ -19,18 +19,21 @@ TfidfVectorizer(
 )
 ```
 
-## بيانات التدريب
+ملفات استخراج الخصائص المتاحة: `vectorizer.pkl`, `svm_vectorizer.pkl`, `rf_vectorizer.pkl`, `lr_vectorizer.pkl`.
 
-- **المصدر**: مراجعات أمازون مصرية
-- **الحجم**: 2000 مراجعة مصنفة
-- **التصنيفات**: إيجابي، سلبي، محايد
+## بيانات الاختبار والتقييم
+
+- **المصدر**: مراجعات أمازون مصرية موسومة
+- **مجموعة الاختبار**: 34 مراجعة اختبار فعلية (18 سلبية، 10 محايدة، 6 إيجابية)
+- **التصنيفات**: إيجابي (1)، سلبي (-1)، محايد (0)
+- **ملاحظة**: دقة 94.12% مبنية على تقييم مجموعة الاختبار الحالية (`reports/svm_evaluation_report.txt`).
 
 ## الاستخدام
 
 ```python
 import joblib
 
-model = joblib.load('models/sentiment_svm.pkl')
+model = joblib.load('models/svm_model.pkl')
 vectorizer = joblib.load('models/vectorizer.pkl')
 
 text = "المنتج ده جامد"

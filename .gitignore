@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Environment files & secrets
+.env
+.env.local
+*.log
+
+# OS & IDE artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary / huge raw dumps if not versioned
+*.tmp
